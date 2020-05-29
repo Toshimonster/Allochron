@@ -1,0 +1,22 @@
+{
+  "name": "allochron",
+  "version": "0.1.0",
+  "description": "'Other Time' - A manager managing asyncronous and syncronous modules",
+  "main": "index.js",
+  "author": "Toshimonster",
+  "license": "MIT",
+  "scripts": {
+    "run": "node src/index.js",
+    "docs": "npx jsdoc -c ./jsdoc.json ./src -r",
+    "build": "npx babel src -d lib"
+  },
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "moment": "^2.26.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.1.0",
+    "jsdoc": "^3.6.4",
+    "prettier": "^2.0.5"
+  }
+}
