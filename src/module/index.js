@@ -1,9 +1,9 @@
-const Logger = require("../util").Logger
+const Logger = require('../util').Logger;
 
 class runtimeObject {
-    constructor(runtimeClients) {
-        Object.assign(this, runtimeClients)
-    }
+	constructor(runtimeClients) {
+		Object.assign(this, runtimeClients);
+	}
 }
 
 /**
@@ -16,14 +16,14 @@ class Module extends Logger {
     #runtimeClients = {};
 
     addRuntimeClient (Client) {
-        this.#runtimeClients[Client.pool.name] = Client
-        this.debug(`Added ${Client.name} to runtime`)
+    	this.#runtimeClients[Client.pool.name] = Client;
+    	this.debug(`Added ${Client.name} to runtime`);
     }
 
     async executeRuntime () {
-        this.debug("Executing runtime")
-        let runtime = new runtimeObject(this.#runtimeClients)
-        return await this.runtime(runtime)
+    	this.debug('Executing runtime');
+    	let runtime = new runtimeObject(this.#runtimeClients);
+    	return await this.runtime(runtime);
     }
 
     /**
@@ -35,11 +35,11 @@ class Module extends Logger {
      * @memberof Module
      */
     constructor (moduleName, requiredPools=[], initialize=(Module)=>{}, runtime=(runtimeObject, Module)=>{}) {
-        super(moduleName)
-        this.prefix = "Module"
-        this.requiredPools = requiredPools
-        this._initialize = initialize
-        this._runtime = runtime
+    	super(moduleName);
+    	this.prefix = 'Module';
+    	this.requiredPools = requiredPools;
+    	this._initialize = initialize;
+    	this._runtime = runtime;
     }
 
     /**
@@ -54,7 +54,7 @@ class Module extends Logger {
      * @memberof Pool
      */
     async initialize () {
-        return await this._initialize(this)
+    	return await this._initialize(this);
     }
 
     /**
@@ -70,8 +70,8 @@ class Module extends Logger {
      * @memberof Module
      */
     async runtime (runtime) {
-        return await this._runtime(runtime, this)
+    	return await this._runtime(runtime, this);
     }
 }
 
-module.exports = Module
+module.exports = Module;

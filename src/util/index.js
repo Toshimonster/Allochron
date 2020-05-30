@@ -1,6 +1,6 @@
-const chalk = require("chalk");
-const moment = require("moment");
-const util = require("util");
+const chalk = require('chalk');
+const moment = require('moment');
+const util = require('util');
 
 /**
  * A class providing support for logging
@@ -11,11 +11,11 @@ const util = require("util");
  */
 class Logger {
 	#logLevels = {
-		trace: "lightgrey",
-		debug: "cyan",
-		info: "white",
-		warn: "yellow",
-		error: "red",
+		trace: 'lightgrey',
+		debug: 'cyan',
+		info: 'white',
+		warn: 'yellow',
+		error: 'red',
 	};
 
 	#logLevel = 0;
@@ -46,15 +46,15 @@ class Logger {
 	}
 
 	_getprefix() {
-		return `[${moment().format("DD/MM/YY HH:mm:ss:SS")} ${
-			this.#prefix ? this.#prefix + ":" : ""
+		return `[${moment().format('DD/MM/YY HH:mm:ss:SS')} ${
+			this.#prefix ? this.#prefix + ':' : ''
 		}${this.#name}]`;
 	}
 
 	_log(level, messages) {
 		let message = [];
 		messages.forEach((obj) => {
-			if (typeof obj === "string") {
+			if (typeof obj === 'string') {
 				message.push(obj);
 			} else {
 				message.push(util.inspect(obj, false, null, true));
@@ -64,7 +64,7 @@ class Logger {
 		return console.log(
 			chalk.keyword(Object.values(this.#logLevels)[level])(
 				chalk.bold(this._getprefix()),
-				message.join(" ")
+				message.join(' ')
 			)
 		);
 	}
